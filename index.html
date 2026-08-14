@@ -326,8 +326,9 @@
       justify-content: space-between;
       align-items: center;
       background: var(--cream);
+      transition: filter 0.15s;
     }
-    summary:hover { background: #faf5eb; }
+    summary:hover { filter: brightness(0.95); }
     summary::marker { display: none; }
     summary::-webkit-details-marker { display: none; }
     
@@ -700,9 +701,9 @@
     /* Categorization Helper */
     function getDisplayCategory(comic) {
       const rawSeries = (comic.series || "").trim();
-      const isSW = rawSeries.toLowerCase().includes("suske");
+      const lower = rawSeries.toLowerCase();
       
-      if (isSW) {
+      if (lower.includes("suske")) {
         const isNumericIssue = comic.issue && /^\d+$/.test(comic.issue.trim());
         if (isNumericIssue) {
           return "Suske en Wiske (Vierkleuren / Hoofdreeks)";
@@ -710,8 +711,106 @@
           return "Suske en Wiske (Buitenreeks / Reclame / Speciaal)";
         }
       }
+
+      if (lower.includes("donald")) {
+        const titleLower = (comic.title || "").toLowerCase();
+        if (titleLower.includes("geen titel") || titleLower.includes("weekblad")) {
+          return "Donald Duck (weekblad)";
+        } else {
+          return "Donald Duck (books)";
+        }
+      }
+
+      if (lower.includes("phil")) {
+        return "Philémon";
+      }
       
       return rawSeries || "Overige Strips & Graphic Novels";
+    }
+
+    function getSeriesTheme(categoryName) {
+      const lower = categoryName.toLowerCase();
+
+      if (lower.includes("suske")) {
+        return {
+          headerBg: "#e7010e",
+          headerColor: "#f8f731",
+          badgeBg: "#f8f731",
+          badgeColor: "#e7010e",
+          contentBg: "rgba(231, 1, 14, 0.10)"
+        };
+      }
+      if (lower.includes("asterix")) {
+        return {
+          headerBg: "#ffffff",
+          headerColor: "#e42224",
+          badgeBg: "#e42224",
+          badgeColor: "#ffffff",
+          contentBg: "rgba(228, 34, 36, 0.08)"
+        };
+      }
+      if (lower.includes("donald")) {
+        return {
+          headerBg: "#f8f731",
+          headerColor: "#e7010e",
+          badgeBg: "#e7010e",
+          badgeColor: "#f8f731",
+          contentBg: "rgba(248, 247, 49, 0.15)"
+        };
+      }
+      if (lower.includes("guust")) {
+        return {
+          headerBg: "#286582",
+          headerColor: "#ffffff",
+          badgeBg: "#ffffff",
+          badgeColor: "#286582",
+          contentBg: "rgba(40, 101, 130, 0.10)"
+        };
+      }
+      if (lower.includes("phil")) {
+        return {
+          headerBg: "#b987bc",
+          headerColor: "#000000",
+          badgeBg: "#000000",
+          badgeColor: "#b987bc",
+          contentBg: "rgba(185, 135, 188, 0.15)"
+        };
+      }
+      if (lower.includes("ravian")) {
+        return {
+          headerBg: "#59245c",
+          headerColor: "#ffffff",
+          badgeBg: "#ffffff",
+          badgeColor: "#59245c",
+          contentBg: "rgba(89, 36, 92, 0.12)"
+        };
+      }
+      if (lower.includes("mickey")) {
+        return {
+          headerBg: "#ffffff",
+          headerColor: "#e7010e",
+          badgeBg: "#e7010e",
+          badgeColor: "#ffffff",
+          contentBg: "rgba(231, 1, 14, 0.08)"
+        };
+      }
+      if (lower.includes("lucky")) {
+        return {
+          headerBg: "#e5a93b",
+          headerColor: "#181615",
+          badgeBg: "#181615",
+          badgeColor: "#e5a93b",
+          contentBg: "rgba(229, 169, 59, 0.12)"
+        };
+      }
+
+      return {
+        headerBg: "#ffffff",
+        headerColor: "#181615",
+        badgeBg: "#181615",
+        badgeColor: "#ffffff",
+        contentBg: "rgba(0, 0, 0, 0.04)"
+      };
     }
 
     function initPills(data) {
@@ -721,7 +820,7 @@
       categories.forEach(cat => {
         const btn = document.createElement('button');
         btn.className = 'pill-btn';
-        btn.innerText = cat.replace("Suske en Wiske ", "S&W ");
+        btn.innerText = cat.replace("Suske en Wiske ", "S&W ").replace("Donald Duck ", "DD ");
         btn.onclick = () => selectPill(cat, btn);
         pillsContainer.appendChild(btn);
       });
@@ -759,6 +858,7 @@
       Object.keys(grouped).sort().forEach(categoryName => {
         const items = grouped[categoryName];
         const openAttr = (isSearching || selectedSeriesFilter !== "") ? 'open' : '';
+        const theme = getSeriesTheme(categoryName);
 
         let rowsHtml = items.map(comic => {
           const isChecked = selectedIds.has(comic.id) ? 'checked' : '';
@@ -792,12 +892,12 @@
         }).join('');
 
         accordion.innerHTML += `
-          <details ${openAttr}>
-            <summary>
+          <details ${openAttr} style="border-color: var(--border-ink);">
+            <summary style="background-color: ${theme.headerBg}; color: ${theme.headerColor};">
               <span>${categoryName}</span>
-              <span class="badge">${items.length} item${items.length > 1 ? 's' : ''}</span>
+              <span class="badge" style="background-color: ${theme.badgeBg}; color: ${theme.badgeColor};">${items.length} item${items.length > 1 ? 's' : ''}</span>
             </summary>
-            <div class="series-content">
+            <div class="series-content" style="background-color: ${theme.contentBg};">
               ${rowsHtml}
             </div>
           </details>
