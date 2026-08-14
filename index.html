@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>De Bevende Beeldverhalen — Grote verzameling strips en graphic novels</title>
+  <title>Het bevende beeldverhaal — Grote verzameling strips en graphic novels</title>
   
   <!-- Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,46 +29,34 @@
       font-family: 'Instrument Sans', -apple-system, sans-serif;
       background-color: var(--paper-bg);
       background-image: 
-        radial-gradient(rgba(0, 0, 0, 0.08) 0.8px, transparent 0.8px),
-        radial-gradient(rgba(255, 255, 255, 0.35) 1px, transparent 1px),
-        repeating-linear-gradient(45deg, rgba(0, 0, 0, 0.02) 0, rgba(0, 0, 0, 0.02) 2px, transparent 2px, transparent 8px),
-        repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0.03) 0, rgba(255, 255, 255, 0.03) 2px, transparent 2px, transparent 10px);
-      background-size: 14px 14px, 22px 22px, 32px 32px, 40px 40px;
+        url('site/paper.jpg'),
+        radial-gradient(rgba(0, 0, 0, 0.05) 0.8px, transparent 0.8px);
+      background-repeat: repeat, repeat;
+      background-size: 600px auto, 14px 14px;
+      background-blend-mode: multiply, normal;
       color: var(--ink);
       padding-bottom: 100px;
       line-height: 1.5;
     }
 
-    /* Decorative Textured Blue Banner */
+    /* Decorative Top Rip Banner */
     .decorative-top-strip {
       position: relative;
-      height: 38px;
-      background-color: var(--cobalt);
-      background-image: 
-        radial-gradient(rgba(255, 255, 255, 0.22) 1px, transparent 1px),
-        radial-gradient(rgba(0, 0, 0, 0.3) 1px, transparent 1px);
-      background-size: 6px 6px, 8px 8px;
-      background-position: 0 0, 3px 3px;
-      box-shadow: inset 0 -4px 10px rgba(0,0,0,0.25);
-    }
-
-    .torn-rip-edge {
-      position: absolute;
-      bottom: -12px;
-      left: 0;
       width: 100%;
-      height: 14px;
-      overflow: hidden;
       line-height: 0;
-      z-index: 10;
+      overflow: hidden;
+      background: transparent;
     }
 
-    .torn-rip-edge svg {
-      position: relative;
+    .decorative-top-strip img {
+      width: 100%;
+      height: auto;
+      min-height: 40px;
+      max-height: 100px;
+      object-fit: cover;
       display: block;
-      width: calc(100% + 1.3px);
-      height: 14px;
     }
+
 
     /* Hero Header Section */
     header.hero-header {
@@ -539,13 +527,9 @@
 </head>
 <body>
 
-  <!-- Decorative Textured Blue Band with Graphic Rip Transition -->
+  <!-- Decorative Top Rip Banner -->
   <div class="decorative-top-strip">
-    <div class="torn-rip-edge">
-      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-        <path d="M0,0 L25,75 L50,15 L80,95 L115,20 L150,85 L185,30 L220,105 L260,10 L300,90 L340,35 L380,100 L420,25 L460,80 L500,10 L540,95 L580,30 L620,110 L660,20 L700,85 L740,15 L780,100 L820,30 L860,90 L900,10 L940,85 L980,25 L1020,105 L1060,20 L1100,75 L1140,10 L1175,90 L1200,30 L1200,120 L0,120 Z" fill="#fffef9"></path>
-      </svg>
-    </div>
+    <img src="site/rip.png" alt="Het bevende beeldverhaal paper rip header">
   </div>
 
   <!-- Hero Header Section -->
@@ -562,7 +546,7 @@
       <!-- Right Content Box -->
       <div class="hero-copy">
         <span class="hero-tag">Te Koop Aangeboden</span>
-        <h1>De Bevende Beeldverhalen</h1>
+        <h1>Het bevende beeldverhaal</h1>
         <div class="hero-lead">Grote verzameling strips en graphic novels - in bulk of per item</div>
         
         <p class="hero-note">
@@ -610,7 +594,7 @@
       <p>Stuur direct een bericht voor biedingen op partijen, de gehele collectie of het plannen van een afspraak in Haarlem.</p>
       
       <form class="contact-form" action="https://formsubmit.co/david.enker@gmail.com" method="POST">
-        <input type="hidden" name="_subject" value="Nieuwe interesse: De Bevende Beeldverhalen">
+        <input type="hidden" name="_subject" value="Nieuwe interesse: Het bevende beeldverhaal">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_template" value="table">
         
