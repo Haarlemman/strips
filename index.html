@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>De Bevende Beeldverhalen — Grote verzameling strips en graphic novels</title>
+  
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@700;800;900&family=Instrument+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --ink: #181615;
+      --paper-bg: #c3bf9d;
+      --cream: #fffdf9;
+      --vermillion: #d9381e;
+      --mustard: #e5a93b;
+      --hazard-yellow: #f5c400;
+      --cobalt: #1c4b82;
+      --border-ink: #22201e;
+      --subtle: #615d52;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: 'Instrument Sans', -apple-system, sans-serif;
+      background-color: var(--paper-bg);
+      background-image: 
+        radial-gradient(rgba(0, 0, 0, 0.08) 0.8px, transparent 0.8px),
+        radial-gradient(rgba(255, 255, 255, 0.35) 1px, transparent 1px),
+        repeating-linear-gradient(45deg, rgba(0, 0, 0, 0.02) 0, rgba(0, 0, 0, 0.02) 2px, transparent 2px, transparent 8px),
+        repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0.03) 0, rgba(255, 255, 255, 0.03) 2px, transparent 2px, transparent 10px);
+      background-size: 14px 14px, 22px 22px, 32px 32px, 40px 40px;
+      color: var(--ink);
+      padding-bottom: 100px;
+      line-height: 1.5;
+    }
+
+    /* Decorative Textured Blue Banner */
+    .decorative-top-strip {
+      position: relative;
+      height: 38px;
+      background-color: var(--cobalt);
+      background-image: 
+        radial-gradient(rgba(255, 255, 255, 0.22) 1px, transparent 1px),
+        radial-gradient(rgba(0, 0, 0, 0.3) 1px, transparent 1px);
+      background-size: 6px 6px, 8px 8px;
+      background-position: 0 0, 3px 3px;
+      box-shadow: inset 0 -4px 10px rgba(0,0,0,0.25);
+    }
+
+    .torn-rip-edge {
+      position: absolute;
+      bottom: -12px;
+      left: 0;
+      width: 100%;
+      height: 14px;
+      overflow: hidden;
+      line-height: 0;
+      z-index: 10;
+    }
+
+    .torn-rip-edge svg {
+      position: relative;
+      display: block;
+      width: calc(100% + 1.3px);
+      height: 14px;
+    }
+
+    /* Hero Header Section */
+    header.hero-header {
+      position: relative;
+      background: linear-gradient(135deg, #fffef9 0%, #f7f3e6 100%);
+      border-bottom: 4px solid var(--border-ink);
+      padding: 48px 24px 40px 24px;
+      box-shadow: 0 8px 24px rgba(24, 22, 21, 0.08);
+    }
+
+    .hero-layout {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 400px 1fr;
+      gap: 38px;
+      align-items: center;
+    }
+
+    /* Left Frame */
+    .hero-visual {
+      position: relative;
+    }
+    .hero-visual::before {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      right: -10px;
+      bottom: -10px;
+      background: var(--mustard);
+      border: 3px solid var(--border-ink);
+      z-index: 1;
+    }
+    .hero-image-frame {
+      position: relative;
+      border: 3px solid var(--border-ink);
+      background: #111;
+      z-index: 2;
+      box-shadow: 6px 6px 0px var(--vermillion);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .hero-image-frame img {
+      width: 100%;
+      height: auto;
+      max-height: 400px;
+      object-fit: contain;
+      display: block;
+    }
+
+    /* Right Copy Block */
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .hero-tag {
+      align-self: flex-start;
+      background: var(--vermillion);
+      color: #ffffff;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border: 2px solid var(--border-ink);
+      box-shadow: 2px 2px 0px var(--border-ink);
+    }
+
+    .hero-copy h1 {
+      font-family: 'Cabinet Grotesk', 'Syne', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      text-transform: uppercase;
+    }
+
+    .hero-lead {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--vermillion);
+      letter-spacing: -0.01em;
+    }
+
+    .hero-note {
+      font-size: 0.92rem;
+      color: #3f3b36;
+      line-height: 1.55;
+      background: rgba(255, 255, 255, 0.75);
+      padding: 12px 14px;
+      border-left: 3px solid var(--mustard);
+      border-radius: 0 6px 6px 0;
+    }
+
+    .hero-action-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 4px;
+    }
+
+    .header-contact-btn {
+      background: var(--ink);
+      color: var(--cream);
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      padding: 10px 20px;
+      border: 2px solid var(--border-ink);
+      box-shadow: 3px 3px 0px var(--mustard);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .header-contact-btn:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 4px 4px 0px var(--vermillion);
+      background: #2b2724;
+    }
+
+    .container { max-width: 1100px; margin: 32px auto; padding: 0 20px; }
+
+    /* "IMPRESSIES" Carousel Section */
+    .showcase-section {
+      background: var(--cream);
+      border: 3px solid var(--border-ink);
+      border-radius: 4px;
+      padding: 24px 22px 28px 22px;
+      margin-bottom: 28px;
+      box-shadow: 6px 6px 0px rgba(24, 22, 21, 0.12);
+    }
+    .showcase-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 8px;
+      border-bottom: 2px dashed var(--border-ink);
+    }
+    .showcase-header h2 {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+    .refresh-btn {
+      background: var(--cream);
+      border: 2px solid var(--border-ink);
+      padding: 6px 14px;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 0.82rem;
+      cursor: pointer;
+      box-shadow: 2px 2px 0px var(--border-ink);
+      transition: transform 0.1s;
+    }
+    .refresh-btn:hover { transform: translate(-1px, -1px); box-shadow: 3px 3px 0px var(--vermillion); }
+
+    .collage-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 16px;
+      align-items: center;
+      justify-items: center;
+      min-height: 180px;
+    }
+
+    .collage-img-direct {
+      max-width: 100%;
+      height: 170px;
+      object-fit: contain;
+      border: none;
+      border-radius: 4px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+      cursor: pointer;
+      background: transparent;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .collage-img-direct:hover {
+      transform: translateY(-4px) scale(1.04);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Controls Bar: Search & Compact Pill Tabs */
+    .controls-wrapper {
+      background: var(--cream);
+      border: 3px solid var(--border-ink);
+      padding: 16px 20px;
+      margin-bottom: 24px;
+      box-shadow: 5px 5px 0px rgba(24, 22, 21, 0.1);
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 12px 16px;
+      font-family: inherit;
+      font-size: 0.98rem;
+      font-weight: 600;
+      border: 2px solid var(--border-ink);
+      background: #ffffff;
+      outline: none;
+      margin-bottom: 12px;
+    }
+
+    /* Compact Pill Filter Buttons */
+    .quick-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+    }
+    .pill-label {
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--subtle);
+      margin-right: 4px;
+    }
+    .pill-btn {
+      background: #eee8dc;
+      border: 1.5px solid var(--border-ink);
+      color: var(--ink);
+      font-family: inherit;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .pill-btn:hover, .pill-btn.active {
+      background: var(--ink);
+      color: var(--cream);
+      border-color: var(--ink);
+    }
+
+    /* Accordion Chapters */
+    .series-accordion { display: flex; flex-direction: column; gap: 10px; margin-bottom: 40px; }
+    details {
+      background: var(--cream);
+      border: 2px solid var(--border-ink);
+      box-shadow: 2px 2px 0px rgba(0,0,0,0.06);
+    }
+    details[open] { border-color: var(--border-ink); box-shadow: 4px 4px 0px var(--vermillion); }
+    
+    summary {
+      padding: 14px 20px;
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 800;
+      cursor: pointer;
+      user-select: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--cream);
+    }
+    summary:hover { background: #faf5eb; }
+    summary::marker { display: none; }
+    summary::-webkit-details-marker { display: none; }
+    
+    .badge {
+      background: var(--ink);
+      color: var(--mustard);
+      font-family: 'Syne', sans-serif;
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .series-content {
+      padding: 8px 20px 18px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      border-top: 2px dashed var(--border-ink);
+      background: #fffdfa;
+    }
+
+    /* Item Rows without 'De Staat' */
+    .item-row {
+      padding: 12px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      border-bottom: 1px solid #ede8dc;
+    }
+    .item-row:last-child { border-bottom: none; }
+    .item-left { display: flex; align-items: center; gap: 18px; flex: 1; }
+    
+    .item-thumb {
+      width: 85px;
+      height: 115px;
+      object-fit: contain;
+      border: 2px solid var(--border-ink);
+      background: #ffffff;
+      padding: 4px;
+      box-shadow: 3px 3px 0px rgba(0,0,0,0.06);
+      flex-shrink: 0;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .item-thumb:hover {
+      transform: scale(1.04);
+      box-shadow: 4px 4px 0px var(--vermillion);
+    }
+    
+    .item-info { display: flex; flex-direction: column; gap: 4px; }
+    .item-title { font-size: 1rem; font-weight: 700; color: var(--ink); }
+    .item-meta { font-size: 0.84rem; color: var(--subtle); line-height: 1.45; }
+    
+    .item-right { display: flex; align-items: center; gap: 18px; }
+    .price { font-size: 1.1rem; font-weight: 800; color: var(--vermillion); min-width: 65px; text-align: right; font-family: 'Cabinet Grotesk', sans-serif; }
+    .select-btn { display: flex; align-items: center; gap: 6px; cursor: pointer; font-size: 0.85rem; font-weight: 700; }
+    .select-btn input { width: 18px; height: 18px; accent-color: var(--vermillion); }
+
+    /* Contact Section with Police / Hazard Gradient Stripes */
+    .contact-section {
+      position: relative;
+      background: #fffefb;
+      border: 3px solid var(--border-ink);
+      padding: 40px 30px;
+      box-shadow: 6px 6px 0px var(--border-ink);
+      overflow: hidden;
+    }
+
+    .hazard-stripe-top, .hazard-stripe-bottom {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 14px;
+      background: repeating-linear-gradient(
+        -45deg,
+        var(--ink) 0px,
+        var(--ink) 12px,
+        var(--hazard-yellow) 12px,
+        var(--hazard-yellow) 24px,
+        var(--vermillion) 24px,
+        var(--vermillion) 28px
+      );
+      border-bottom: 2px solid var(--border-ink);
+    }
+    .hazard-stripe-top { top: 0; }
+    .hazard-stripe-bottom { bottom: 0; top: auto; border-bottom: none; border-top: 2px solid var(--border-ink); }
+
+    .contact-section h2 {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 900;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+    .contact-form { display: flex; flex-direction: column; gap: 16px; margin-top: 20px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label { font-size: 0.88rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; }
+    .form-group input, .form-group textarea {
+      padding: 12px 16px;
+      border: 2px solid var(--border-ink);
+      font-size: 0.95rem;
+      font-family: inherit;
+      background: #ffffff;
+      outline: none;
+    }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .submit-btn {
+      background: var(--vermillion);
+      color: #ffffff;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      border: 2px solid var(--border-ink);
+      padding: 14px 28px;
+      cursor: pointer;
+      box-shadow: 3px 3px 0px var(--border-ink);
+      align-self: flex-start;
+      transition: all 0.15s;
+    }
+    .submit-btn:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 4px 4px 0px var(--ink);
+      background: #bf2d15;
+    }
+
+    /* Fixed Bottom Selection Bar */
+    .cart-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--ink);
+      color: #ffffff;
+      padding: 14px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 3px solid var(--mustard);
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
+      z-index: 1000;
+    }
+    .cart-bar strong { color: var(--mustard); }
+    .cart-btn {
+      background: var(--vermillion);
+      color: #ffffff;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      border: 2px solid var(--cream);
+      padding: 10px 22px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .cart-btn:hover { background: #b82c16; }
+
+    /* Lightbox Modal */
+    .lightbox-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background: rgba(18, 16, 15, 0.88);
+      backdrop-filter: blur(5px);
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+      cursor: zoom-out;
+    }
+    .lightbox-modal.active { display: flex; }
+    .lightbox-content {
+      max-width: 90vw;
+      max-height: 88vh;
+      object-fit: contain;
+      border: 3px solid #ffffff;
+      box-shadow: 0 12px 36px rgba(0,0,0,0.5);
+      border-radius: 4px;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1000px) {
+      .collage-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 860px) {
+      .hero-layout { grid-template-columns: 1fr; gap: 24px; text-align: left; }
+      .item-row { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .item-right { width: 100%; justify-content: space-between; border-top: 1px solid #ede8dc; padding-top: 8px; }
+    }
+    @media (max-width: 600px) {
+      .collage-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .collage-img-direct { height: 140px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Decorative Textured Blue Band with Graphic Rip Transition -->
+  <div class="decorative-top-strip">
+    <div class="torn-rip-edge">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,0 L25,75 L50,15 L80,95 L115,20 L150,85 L185,30 L220,105 L260,10 L300,90 L340,35 L380,100 L420,25 L460,80 L500,10 L540,95 L580,30 L620,110 L660,20 L700,85 L740,15 L780,100 L820,30 L860,90 L900,10 L940,85 L980,25 L1020,105 L1060,20 L1100,75 L1140,10 L1175,90 L1200,30 L1200,120 L0,120 Z" fill="#fffef9"></path>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Hero Header Section -->
+  <header class="hero-header">
+    <div class="hero-layout">
+      
+      <!-- Left Visual Frame -->
+      <div class="hero-visual">
+        <div class="hero-image-frame" onclick="openLightbox('images/PXL_20250830_142455851.jpg')">
+          <img src="images/PXL_20250830_142455851.jpg" alt="Collectie Overzichtsfoto">
+        </div>
+      </div>
+
+      <!-- Right Content Box -->
+      <div class="hero-copy">
+        <span class="hero-tag">Te Koop Aangeboden</span>
+        <h1>De Bevende Beeldverhalen</h1>
+        <div class="hero-lead">Grote verzameling strips en graphic novels - in bulk of per item</div>
+        
+        <p class="hero-note">
+          Gevarieerde verzameling klassiekers, reeksen en graphic novels voornamelijk uit de <strong>jaren 60, 70 en 80</strong> (o.a. <em>Asterix</em>, <em>Donald Duck</em>, <em>Guust Flater</em>, <em>Lucky Luke</em>, <em>Philémon</em>, <em>Ravian</em> en <em>Suske &amp; Wiske</em>). <strong>Afname in grote partijen heeft de voorkeur.</strong> Mijn mobiliteit is beperkt, waardoor ophalen in Haarlem de voorkeur heeft.
+        </p>
+
+        <div class="hero-action-row">
+          <button class="header-contact-btn" onclick="scrollToContact()">Direct Informeren / Contact ↓</button>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!-- "IMPRESSIES" Carousel Section -->
+    <div class="showcase-section">
+      <div class="showcase-header">
+        <h2>IMPRESSIES</h2>
+        <button class="refresh-btn" onclick="rotateShowcase()">Volgende foto's ↻</button>
+      </div>
+      <div class="collage-grid" id="photoGallery"></div>
+    </div>
+
+    <!-- Controls: Search + Compact Pill Filters -->
+    <div class="controls-wrapper">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Zoek op titel, auteur of albumnaam..." oninput="filterComics()">
+      </div>
+      <div class="quick-pills" id="quickPills">
+        <span class="pill-label">Reeksen:</span>
+        <button class="pill-btn active" onclick="selectPill('')">Alles</button>
+      </div>
+    </div>
+
+    <!-- Series Accordion Chapters -->
+    <div class="series-accordion" id="seriesAccordion"></div>
+
+    <!-- Contact Form Section with Police/Hazard Diagonal Stripes -->
+    <div class="contact-section" id="contact">
+      <div class="hazard-stripe-top"></div>
+      
+      <h2>Interesse of Vragen?</h2>
+      <p>Stuur direct een bericht voor biedingen op partijen, de gehele collectie of het plannen van een afspraak in Haarlem.</p>
+      
+      <form class="contact-form" action="https://formsubmit.co/david.enker@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="Nieuwe interesse: De Bevende Beeldverhalen">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        
+        <div class="form-group">
+          <label for="name">Naam</label>
+          <input type="text" id="name" name="Naam" required placeholder="Uw volledige naam">
+        </div>
+        <div class="form-group">
+          <label for="email">E-mailadres</label>
+          <input type="email" id="email" name="Email" required placeholder="naam@voorbeeld.nl">
+        </div>
+        <div class="form-group">
+          <label for="message">Bericht / Selectie</label>
+          <textarea id="message" name="Bericht" required placeholder="Geef aan waarin u geïnteresseerd bent (partij, reeks, graphic novels, ophalen)..."></textarea>
+        </div>
+        <input type="hidden" id="selectedItemsField" name="Geselecteerde_Strips" value="">
+        <button type="submit" class="submit-btn">Verstuur Aanvraag</button>
+      </form>
+      
+      <div class="hazard-stripe-bottom"></div>
+    </div>
+
+  </div>
+
+  <!-- Floating Selection Summary Bar -->
+  <div class="cart-bar">
+    <div>
+      <span id="selectedCount">0</span> item(s) geselecteerd | Totaal indicatie: <strong>€<span id="totalPrice">0.00</span></strong>
+    </div>
+    <button class="cart-btn" onclick="scrollToContact()">Informeer Direct</button>
+  </div>
+
+  <!-- Lightbox Modal Overlay -->
+  <div id="lightboxModal" class="lightbox-modal" onclick="closeLightbox()">
+    <img id="lightboxImg" class="lightbox-content" src="" alt="Vergrote weergave">
+  </div>
+
+  <script src="comics.js"></script>
+
+  <script>
+    const explicitPhotos = [
+      "images/24639.jpeg",
+      "images/IMG_4210b.jpg",
+      "images/PXL_20250830_133146111.jpg",
+      "images/PXL_20250830_133249784.jpg",
+      "images/PXL_20250830_133426374.jpg",
+      "images/PXL_20250830_133916276.jpg",
+      "images/PXL_20250830_134027924.jpg"
+    ];
+
+    const heroImageName = "PXL_20250830_142455851.jpg";
+    const selectedIds = new Set();
+    let photoIndex = 0;
+    const batchSize = 6;
+    let autoRotateTimer = null;
+    let selectedSeriesFilter = "";
+
+    /* Lightbox Functions */
+    function openLightbox(src) {
+      if (!src) return;
+      document.getElementById('lightboxImg').src = src;
+      document.getElementById('lightboxModal').classList.add('active');
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightboxModal').classList.remove('active');
+    }
+
+    function getCleanPhotoList() {
+      const allPhotos = (typeof galleryPhotos !== 'undefined' && galleryPhotos.length > 0) 
+        ? galleryPhotos 
+        : explicitPhotos;
+      return allPhotos.filter(src => !src.includes(heroImageName));
+    }
+
+    function rotateShowcase() {
+      const gallery = document.getElementById('photoGallery');
+      const photos = getCleanPhotoList();
+      if (photos.length === 0) return;
+
+      const currentBatch = [];
+      const count = Math.min(batchSize, photos.length);
+      
+      for (let i = 0; i < count; i++) {
+        const idx = (photoIndex + i) % photos.length;
+        currentBatch.push(photos[idx]);
+      }
+      
+      gallery.innerHTML = currentBatch.map(src => `
+        <img src="${src}" class="collage-img-direct" alt="Impressie foto" onclick="openLightbox('${src}')" onerror="this.style.display='none';">
+      `).join('');
+
+      photoIndex = (photoIndex + count) % photos.length;
+    }
+
+    function startAutoRotate() {
+      rotateShowcase();
+      autoRotateTimer = setInterval(rotateShowcase, 4000);
+    }
+
+    /* Categorization Helper */
+    function getDisplayCategory(comic) {
+      const rawSeries = (comic.series || "").trim();
+      const isSW = rawSeries.toLowerCase().includes("suske");
+      
+      if (isSW) {
+        const isNumericIssue = comic.issue && /^\d+$/.test(comic.issue.trim());
+        if (isNumericIssue) {
+          return "Suske en Wiske (Vierkleuren / Hoofdreeks)";
+        } else {
+          return "Suske en Wiske (Buitenreeks / Reclame / Speciaal)";
+        }
+      }
+      
+      return rawSeries || "Overige Strips & Graphic Novels";
+    }
+
+    function initPills(data) {
+      const pillsContainer = document.getElementById('quickPills');
+      const categories = [...new Set(data.map(c => getDisplayCategory(c)))].sort();
+
+      categories.forEach(cat => {
+        const btn = document.createElement('button');
+        btn.className = 'pill-btn';
+        btn.innerText = cat.replace("Suske en Wiske ", "S&W ");
+        btn.onclick = () => selectPill(cat, btn);
+        pillsContainer.appendChild(btn);
+      });
+    }
+
+    function selectPill(cat, element) {
+      selectedSeriesFilter = cat;
+      document.querySelectorAll('.pill-btn').forEach(b => b.classList.remove('active'));
+      if (element) {
+        element.classList.add('active');
+      } else {
+        document.querySelector('.pill-btn').classList.add('active');
+      }
+      filterComics();
+    }
+
+    function renderAccordion(data) {
+      const accordion = document.getElementById('seriesAccordion');
+      accordion.innerHTML = '';
+
+      if (!data || data.length === 0) {
+        accordion.innerHTML = '<p style="text-align: center; color: var(--subtle); padding: 24px;">Geen items gevonden.</p>';
+        return;
+      }
+
+      const grouped = {};
+      data.forEach(comic => {
+        const cat = getDisplayCategory(comic);
+        if (!grouped[cat]) grouped[cat] = [];
+        grouped[cat].push(comic);
+      });
+
+      const isSearching = document.getElementById('searchInput').value.trim().length > 0;
+
+      Object.keys(grouped).sort().forEach(categoryName => {
+        const items = grouped[categoryName];
+        const openAttr = (isSearching || selectedSeriesFilter !== "") ? 'open' : '';
+
+        let rowsHtml = items.map(comic => {
+          const isChecked = selectedIds.has(comic.id) ? 'checked' : '';
+          const thumbHtml = comic.img 
+            ? `<img src="${comic.img}" class="item-thumb" alt="${comic.title}" onclick="openLightbox('${comic.img}')" onerror="this.style.display='none';">` 
+            : '';
+
+          // Only Issue, Author, and Edition Year (Staat removed)
+          const metaParts = [];
+          if (comic.issue && /^\d+$/.test(comic.issue.trim())) metaParts.push(`Nr. #${comic.issue}`);
+          if (comic.author) metaParts.push(comic.author);
+          if (comic.print && comic.print.trim() !== "") metaParts.push(`Druk: ${comic.print}`);
+
+          return `
+            <div class="item-row">
+              <div class="item-left">
+                ${thumbHtml}
+                <div class="item-info">
+                  <div class="item-title">${comic.title}</div>
+                  <div class="item-meta">${metaParts.join(' • ')}</div>
+                </div>
+              </div>
+              <div class="item-right">
+                <span class="price">${comic.price || '—'}</span>
+                <label class="select-btn">
+                  <input type="checkbox" ${isChecked} onchange="toggleSelect(${comic.id}, this.checked)"> Selecteer
+                </label>
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        accordion.innerHTML += `
+          <details ${openAttr}>
+            <summary>
+              <span>${categoryName}</span>
+              <span class="badge">${items.length} item${items.length > 1 ? 's' : ''}</span>
+            </summary>
+            <div class="series-content">
+              ${rowsHtml}
+            </div>
+          </details>
+        `;
+      });
+    }
+
+    function filterComics() {
+      const search = document.getElementById('searchInput').value.toLowerCase();
+      const filtered = comics.filter(c => {
+        const cat = getDisplayCategory(c);
+        const matchesSearch = c.title.toLowerCase().includes(search) || 
+                              c.author.toLowerCase().includes(search) || 
+                              cat.toLowerCase().includes(search);
+        const matchesPill = selectedSeriesFilter === "" || cat === selectedSeriesFilter;
+        return matchesSearch && matchesPill;
+      });
+      renderAccordion(filtered);
+    }
+
+    function toggleSelect(id, isSelected) {
+      if (isSelected) selectedIds.add(id);
+      else selectedIds.delete(id);
+      updateCartSummary();
+    }
+
+    function updateCartSummary() {
+      const selectedComics = comics.filter(c => selectedIds.has(c.id));
+      const total = selectedComics.reduce((sum, c) => {
+        const p = parseFloat(c.price.replace(/[^0-9.,]/g, '').replace(',', '.')) || 0;
+        return sum + p;
+      }, 0);
+
+      document.getElementById('selectedCount').innerText = selectedIds.size;
+      document.getElementById('totalPrice').innerText = total.toFixed(2);
+
+      const itemsList = selectedComics.map(c => `${getDisplayCategory(c)}: ${c.title} (${c.price})`).join('\n');
+      document.getElementById('selectedItemsField').value = itemsList;
+    }
+
+    function scrollToContact() {
+      document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      startAutoRotate();
+      if (typeof comics !== 'undefined') {
+        initPills(comics);
+        renderAccordion(comics);
+      }
+    });
+  </script>
+</body>
+</html>
