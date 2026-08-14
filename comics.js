@@ -4498,5 +4498,16 @@ const comics = [
     "condition": "goed",
     "price": "€ 2,50",
     "link": "https://nl.wikipedia.org/wiki/Kuifje_en_de_Alfa-kunst"
+  },
+  {
+    "id": 378,
+    "title": "The complete THE ACME NOVELTY LIBRARY",
+    "series": "Chris Ware",
+    "issue": "",
+    "author": "Chris Ware",
+    "print": "",
+    "condition": "",
+    "price": "",
+    "link": ""
   }
 ];

@@ -25,6 +25,11 @@
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     
+    html, body {
+      overflow-x: hidden;
+      width: 100%;
+    }
+
     body {
       font-family: 'Instrument Sans', -apple-system, sans-serif;
       background-color: var(--paper-bg);
@@ -51,6 +56,7 @@
     .decorative-top-strip img {
       width: 108%;
       margin-left: -4%;
+      margin-top: -10px;
       height: auto;
       min-height: 45px;
       max-height: 105px;
@@ -125,29 +131,33 @@
       color: #ffffff;
       font-family: 'Syne', sans-serif;
       font-weight: 800;
-      font-size: 0.78rem;
+      font-size: 1.17rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      padding: 4px 10px;
+      padding: 6px 14px;
       border: 2px solid var(--border-ink);
-      box-shadow: 2px 2px 0px var(--border-ink);
+      box-shadow: 3px 3px 0px var(--border-ink);
     }
 
     .hero-copy h1 {
       font-family: 'Cabinet Grotesk', 'Syne', sans-serif;
-      font-size: 2.2rem;
+      font-size: clamp(1.4rem, 5.5vw, 2.2rem);
       font-weight: 900;
       line-height: 1.1;
       letter-spacing: -0.03em;
       color: var(--ink);
       text-transform: uppercase;
+      word-break: break-word;
+      overflow-wrap: break-word;
     }
 
     .hero-lead {
-      font-size: 1.05rem;
+      font-size: clamp(0.92rem, 3.2vw, 1.05rem);
       font-weight: 700;
       color: var(--vermillion);
       letter-spacing: -0.01em;
+      word-break: break-word;
+      overflow-wrap: break-word;
     }
 
     .hero-note {
@@ -475,6 +485,10 @@
       box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
       z-index: 1000;
     }
+    .cart-bar-info {
+      min-width: 0;
+      line-height: 1.35;
+    }
     .cart-bar strong { color: var(--mustard); }
     .cart-btn {
       background: var(--vermillion);
@@ -523,8 +537,74 @@
       .item-right { width: 100%; justify-content: space-between; border-top: 1px solid #ede8dc; padding-top: 8px; }
     }
     @media (max-width: 600px) {
-      .collage-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-      .collage-img-direct { height: 140px; }
+      body {
+        padding-bottom: 110px;
+      }
+      header.hero-header {
+        padding: 24px 16px 20px 16px;
+      }
+      .hero-action-row {
+        width: 100%;
+      }
+      .header-contact-btn {
+        width: 100%;
+        text-align: center;
+        padding: 12px 18px;
+      }
+      .container {
+        padding: 0 12px;
+        margin: 20px auto;
+      }
+      .showcase-section {
+        padding: 16px 14px 20px 14px;
+      }
+      .controls-wrapper {
+        padding: 14px 12px;
+      }
+      .search-box input, 
+      .form-group input, 
+      .form-group textarea {
+        font-size: 16px; /* Prevents auto-zoom on mobile browsers */
+        padding: 10px 14px;
+      }
+      .submit-btn {
+        width: 100%;
+        text-align: center;
+        padding: 14px 20px;
+      }
+      .contact-section {
+        padding: 28px 16px;
+      }
+      .collage-grid { 
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 10px; 
+      }
+      .collage-img-direct { 
+        height: 135px; 
+      }
+      summary {
+        padding: 12px 14px;
+        font-size: 0.96rem;
+      }
+      .series-content {
+        padding: 8px 10px 16px 10px;
+      }
+      .cart-bar {
+        padding: 10px 14px;
+        padding-bottom: max(10px, env(safe-area-inset-bottom));
+        gap: 10px;
+      }
+      .cart-bar-info {
+        font-size: 0.8rem;
+        flex: 1;
+      }
+      .cart-btn {
+        padding: 8px 14px;
+        font-size: 0.78rem;
+        white-space: nowrap;
+        flex-shrink: 0;
+        letter-spacing: 0.02em;
+      }
     }
   </style>
 </head>
@@ -548,7 +628,7 @@
 
       <!-- Right Content Box -->
       <div class="hero-copy">
-        <span class="hero-tag">Te Koop Aangeboden</span>
+        <span class="hero-tag">TE KOOP</span>
         <h1>Het bevende beeldverhaal</h1>
         <div class="hero-lead">Grote verzameling strips en graphic novels - in bulk of per item</div>
         
@@ -557,7 +637,7 @@
         </p>
 
         <div class="hero-action-row">
-          <button class="header-contact-btn" onclick="scrollToContact()">Direct Informeren / Contact ↓</button>
+          <button class="header-contact-btn" onclick="scrollToContact()">CONTACT ↓</button>
         </div>
       </div>
 
@@ -570,7 +650,7 @@
     <div class="showcase-section">
       <div class="showcase-header">
         <h2>IMPRESSIES</h2>
-        <button class="refresh-btn" onclick="rotateShowcase()">Volgende foto's ↻</button>
+        <button class="refresh-btn" onclick="rotateShowcase()">Volgende ↻</button>
       </div>
       <div class="collage-grid" id="photoGallery"></div>
     </div>
@@ -614,7 +694,7 @@
           <textarea id="message" name="Bericht" required placeholder="Geef aan waarin u geïnteresseerd bent (partij, reeks, graphic novels, ophalen)..."></textarea>
         </div>
         <input type="hidden" id="selectedItemsField" name="Geselecteerde_Strips" value="">
-        <button type="submit" class="submit-btn">Verstuur Aanvraag</button>
+        <button type="submit" class="submit-btn">VERSTUUR</button>
       </form>
       
       <div class="hazard-stripe-bottom"></div>
@@ -624,10 +704,10 @@
 
   <!-- Floating Selection Summary Bar -->
   <div class="cart-bar">
-    <div>
-      <span id="selectedCount">0</span> item(s) geselecteerd | Totaal indicatie: <strong>€<span id="totalPrice">0.00</span></strong>
+    <div class="cart-bar-info">
+      <span id="selectedCount">0</span> item(s) | Totaal: <strong>€<span id="totalPrice">0.00</span></strong>
     </div>
-    <button class="cart-btn" onclick="scrollToContact()">Informeer Direct</button>
+    <button class="cart-btn" onclick="scrollToContact()">Contact</button>
   </div>
 
   <!-- Lightbox Modal Overlay -->
@@ -635,7 +715,7 @@
     <img id="lightboxImg" class="lightbox-content" src="" alt="Vergrote weergave">
   </div>
 
-  <script src="comics.js?v=20260814b"></script>
+  <script src="comics.js?v=20260814_deploy"></script>
 
   <script>
     const explicitPhotos = [
@@ -719,9 +799,9 @@
       if (lower.includes("suske")) {
         const isNumericIssue = comic.issue && /^\d+$/.test(comic.issue.trim());
         if (isNumericIssue) {
-          return "Suske en Wiske (Vierkleuren / Hoofdreeks)";
+          return "Suske en Wiske (Hoofdreeks)";
         } else {
-          return "Suske en Wiske (Buitenreeks / Reclame / Speciaal)";
+          return "Suske en Wiske (Buiten Reeks)";
         }
       }
 
@@ -740,6 +820,10 @@
 
       if (lower.includes("phil")) {
         return "Philémon";
+      }
+
+      if (lower.includes("chris") || lower.includes("ware")) {
+        return "Chris Ware";
       }
 
       if (lower.includes("diversen") || lower.includes("overige") || lower.includes("various")) {
@@ -833,6 +917,16 @@
           contentBg: "rgba(229, 169, 59, 0.12)"
         };
       }
+      if (lower.includes("chris") || lower.includes("ware")) {
+        return {
+          headerBg: "#747474",
+          headerColor: "#fffed4",
+          textOutline: "text-shadow: 0 0 6px #fffc00, 0 0 12px #fffc00;",
+          badgeBg: "#fffed4",
+          badgeColor: "#747474",
+          contentBg: "rgba(116, 116, 116, 0.12)"
+        };
+      }
       if (lower.includes("diversen") || lower.includes("overige") || lower.includes("various")) {
         return {
           headerBg: "linear-gradient(90deg, #e7010e 0%, #f8f731 20%, #17a8f9 40%, #286582 60%, #b987bc 80%, #e5a93b 100%)",
@@ -853,6 +947,20 @@
       };
     }
 
+    function formatCategoryPillHtml(categoryName) {
+      let display = categoryName.replace(" (various)", "");
+      const match = display.match(/^([^(]+)(\s*\(.*\))?$/);
+      if (match) {
+        const mainTitle = match[1].trim();
+        const subTitle = match[2] ? match[2].trim() : '';
+        if (subTitle) {
+          return `${mainTitle} <span style="font-weight: 400; opacity: 0.92;">${subTitle}</span>`;
+        }
+        return mainTitle;
+      }
+      return display;
+    }
+
     function initPills(data) {
       const pillsContainer = document.getElementById('quickPills');
       const categories = [...new Set(data.map(c => getDisplayCategory(c)))];
@@ -867,11 +975,27 @@
         return a.localeCompare(b);
       });
 
-      pillsContainer.innerHTML = '';
+      pillsContainer.innerHTML = '<span class="pill-label">Reeksen:</span><button class="pill-btn active" onclick="selectPill(\'\', this)">Alles</button>';
+
       categories.forEach(cat => {
         const btn = document.createElement('button');
         btn.className = 'pill-btn';
-        btn.innerText = cat.replace("Suske en Wiske ", "S&W ").replace("Donald Duck ", "DD ").replace(" (various)", "");
+        btn.innerHTML = formatCategoryPillHtml(cat);
+        
+        const theme = getSeriesTheme(cat);
+        if (theme && theme.headerBg) {
+          btn.dataset.bg = theme.headerBg;
+          btn.dataset.color = theme.headerColor || 'inherit';
+          btn.dataset.outline = theme.textOutline || '';
+          
+          btn.style.background = theme.headerBg;
+          btn.style.color = theme.headerColor;
+          btn.style.borderColor = 'var(--border-ink)';
+          if (theme.textOutline) {
+            btn.style.cssText += theme.textOutline;
+          }
+        }
+
         btn.onclick = () => selectPill(cat, btn);
         pillsContainer.appendChild(btn);
       });
@@ -879,11 +1003,26 @@
 
     function selectPill(cat, element) {
       selectedSeriesFilter = cat;
-      document.querySelectorAll('.pill-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.pill-btn').forEach(b => {
+        b.classList.remove('active');
+        if (b.dataset.bg) {
+          b.style.background = b.dataset.bg;
+          b.style.color = b.dataset.color;
+          b.style.borderColor = 'var(--border-ink)';
+          b.style.boxShadow = 'none';
+          b.style.transform = 'scale(1)';
+        }
+      });
       if (element) {
         element.classList.add('active');
+        if (element.dataset.bg) {
+          element.style.borderColor = '#fffc00';
+          element.style.boxShadow = '0 0 10px #fffc00, 0 2px 6px rgba(0,0,0,0.4)';
+          element.style.transform = 'scale(1.06)';
+        }
       } else {
-        document.querySelector('.pill-btn').classList.add('active');
+        const firstPill = document.querySelector('.pill-btn');
+        if (firstPill) firstPill.classList.add('active');
       }
       filterComics();
     }
@@ -959,7 +1098,7 @@
           <details ${openAttr} style="border-color: var(--border-ink);">
             <summary style="background: ${theme.headerBg}; color: ${theme.headerColor}; ${textOutlineStyle}">
               <span>${formatCategoryTitleHtml(categoryName)}</span>
-              <span class="badge" style="background-color: ${theme.badgeBg}; color: ${theme.badgeColor}; ${textOutlineStyle}">${items.length} item${items.length !== 1 ? 's' : ''}</span>
+              <span class="badge" style="background-color: ${theme.badgeBg}; color: ${theme.badgeColor}; text-shadow: none;">${items.length} item${items.length !== 1 ? 's' : ''}</span>
             </summary>
             <div class="series-content" style="background: ${theme.contentBg};">
               ${rowsHtml}
