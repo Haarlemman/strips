@@ -4203,7 +4203,7 @@ const comics = [
     "id": 351,
     "title": "Het Delta Duel",
     "series": "Suske & Wiske",
-    "issue": "197",
+    "issue": "",
     "author": "Willy Vandersteen",
     "print": "01/04/1984",
     "condition": "zeer goed",
