@@ -4501,13 +4501,14 @@ const comics = [
   },
   {
     "id": 378,
-    "title": "The complete THE ACME NOVELTY LIBRARY",
+    "title": "THE ACME NOVELTY LIBRARY",
     "series": "Chris Ware",
     "issue": "",
     "author": "Chris Ware",
     "print": "",
     "condition": "",
-    "price": "",
+    "price": "n.o.t.k.",
+    "img": "site/ware.png",
     "link": ""
   }
 ];

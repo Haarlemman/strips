@@ -176,8 +176,8 @@
       justify-content: center;
       overflow: hidden;
       cursor: pointer;
-      min-height: 280px;
-      height: 340px;
+      width: 100%;
+      aspect-ratio: 4 / 3;
     }
     .hero-slide {
       position: absolute;
@@ -612,7 +612,6 @@
     /* Responsive adjustments */
     @media (max-width: 860px) {
       .hero-layout { grid-template-columns: 1fr; gap: 24px; text-align: left; }
-      .hero-image-frame { height: 280px; }
       .item-row { flex-direction: column; align-items: flex-start; gap: 12px; }
       .item-right { width: 100%; justify-content: space-between; border-top: 1px solid #ede8dc; padding-top: 8px; }
     }
@@ -1074,18 +1073,70 @@
             </div>
           `;
         } else if (categoryName === "Chris Ware") {
+          const wareComic = (items && items.length > 0) ? items[0] : { id: 378, title: "THE ACME NOVELTY LIBRARY", price: "n.o.t.k." };
+          const isChecked = selectedIds.has(wareComic.id) ? 'checked' : '';
+
           customBannerHtml = `
-            <div class="custom-series-banner" style="background: #f4f3ed; border-color: #747474;">
-              <div class="banner-title" style="color: #444;">Chris Ware — Collectie &amp; Details</div>
-              <div class="banner-subtitle">Bijzondere uitgaven en graphic novels van Chris Ware. Afbeeldingen en uitgebreide specificaties worden hier geplaatst.</div>
-              <div class="banner-gallery-placeholder" id="chrisWareGallery">
-                <!-- Afbeeldingen en details van Chris Ware kunnen hier geplaatst worden -->
+            <div class="chris-ware-foldout-card" style="background: #f6f5ef; border: 2px solid #5a574f; border-radius: 6px; padding: 28px 20px; text-align: center; margin: 10px 0; box-shadow: 0 4px 14px rgba(0,0,0,0.06);">
+              <h2 style="font-family: 'Cabinet Grotesk', 'Syne', sans-serif; font-size: 2rem; font-weight: 900; color: #181615; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 20px; line-height: 1.2;">
+                THE ACME NOVELTY LIBRARY
+              </h2>
+              <div style="margin: 20px 0; display: flex; justify-content: center;">
+                <img src="site/ware.png" alt="THE ACME NOVELTY LIBRARY — Chris Ware" style="max-width: 100%; max-height: 480px; height: auto; object-fit: contain; cursor: pointer; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.18)); transition: transform 0.2s ease;" onclick="openLightbox('site/ware.png')" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+              </div>
+              <div style="display: flex; justify-content: center; align-items: center; gap: 16px; margin-top: 22px; flex-wrap: wrap;">
+                <span class="price notk" style="font-size: 1.15rem; font-weight: 700; color: var(--ink); background: rgba(0,0,0,0.05); padding: 6px 16px; border-radius: 4px; border: 1px solid rgba(0,0,0,0.12);">Prijs: n.o.t.k.</span>
+                <label class="select-btn" style="cursor: pointer; display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 4px; font-weight: 600;">
+                  <input type="checkbox" ${isChecked} onchange="toggleSelect(${wareComic.id}, this.checked)"> Selecteer
+                </label>
+              </div>
+            </div>
+          `;
+        } else if (categoryName === "Diversen (various)") {
+          customBannerHtml = `
+            <div class="diversen-custom-banner" style="background: #fffdf9; border: 2px solid var(--border-ink); border-radius: 6px; padding: 22px 24px; margin: 10px 0; box-shadow: 0 4px 14px rgba(0,0,0,0.06);">
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; align-items: center;">
+                <div class="diversen-info" style="font-size: 0.98rem; line-height: 1.6; color: var(--ink);">
+                  <div style="font-family: 'Cabinet Grotesk', 'Syne', sans-serif; font-size: 1.25rem; font-weight: 900; color: var(--vermillion); text-transform: uppercase; margin-bottom: 14px; letter-spacing: 0.03em; border-bottom: 2px solid var(--mustard); padding-bottom: 4px; display: inline-block;">
+                    Overige Series &amp; Tijdschriften
+                  </div>
+
+                  <div style="margin-bottom: 14px;">
+                    <strong style="font-size: 1.02rem; color: var(--ink); display: block; margin-bottom: 4px;">Series:</strong>
+                    <ul style="list-style: disc; padding-left: 20px; margin: 0; display: flex; flex-direction: column; gap: 2px;">
+                      <li>Robbedoes en Kwabbernoot</li>
+                      <li>Nero</li>
+                      <li>Storm</li>
+                      <li>Trigië</li>
+                      <li>Olivier Blunder</li>
+                    </ul>
+                  </div>
+
+                  <div style="margin-bottom: 14px;">
+                    <strong style="font-size: 1.02rem; color: var(--ink); display: block; margin-bottom: 4px;">Tijdschriften:</strong>
+                    <ul style="list-style: disc; padding-left: 20px; margin: 0; display: flex; flex-direction: column; gap: 2px;">
+                      <li>Pep</li>
+                      <li>Eppo</li>
+                      <li>Sjors (1958-1964)</li>
+                      <li>Donald Duck (60s-80s)</li>
+                      <li>Mickey Mouse (80s)</li>
+                    </ul>
+                  </div>
+
+                  <div style="font-style: italic; font-weight: 700; font-size: 1.05rem; color: var(--subtle); margin-top: 10px;">
+                    ...en nog veel meer.
+                  </div>
+                </div>
+
+                <div class="diversen-image" style="display: flex; justify-content: center; align-items: center;">
+                  <img src="site/heroes.png" alt="Strips heroïsche figuren collectie" style="max-width: 100%; height: auto; max-height: 380px; object-fit: contain; cursor: pointer; filter: drop-shadow(0 8px 16px rgba(0,0,0,0.15)); transition: transform 0.2s ease;" onclick="openLightbox('site/heroes.png')" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                </div>
               </div>
             </div>
           `;
         }
 
-        let rowsHtml = items.length > 0
+        let rowsHtml = (items.length > 0 && categoryName !== "Chris Ware")
           ? items.map(comic => {
               const isChecked = selectedIds.has(comic.id) ? 'checked' : '';
               const thumbHtml = comic.img 
@@ -1139,7 +1190,7 @@
                 </div>
               `;
             }).join('')
-          : (categoryName === "Donald Duck (weekblad)" || categoryName === "Chris Ware"
+          : (categoryName === "Donald Duck (weekblad)" || categoryName === "Chris Ware" || categoryName === "Diversen (various)"
               ? '' 
               : `<div style="padding: 18px 20px; font-size: 0.95rem; line-height: 1.6; color: var(--ink); background: rgba(255,255,255,0.6); border: 2px dashed var(--border-ink); margin: 8px 0; border-radius: 4px;">
                    <strong style="font-size: 1rem; color: var(--ink);">Binnenkort beschikbaar / in te voeren verzameling:</strong><br>
