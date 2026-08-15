@@ -248,7 +248,7 @@ const comics = [
     "print": "",
     "condition": "​",
     "price": "",
-    "img": "",
+    "img": "resources/ast21.jpg",
     "link": "https://nl.wikipedia.org/wiki/Het_geschenk_van_Caesar"
   },
   {
@@ -392,7 +392,7 @@ const comics = [
     "print": "",
     "condition": "​",
     "price": "",
-    "img": "",
+    "img": "resources/ast33.jpg",
     "link": "https://nl.wikipedia.org/wiki/Het_geheime_wapen"
   },
   {
