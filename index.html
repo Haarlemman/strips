@@ -5,15 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <!-- Primary Meta Tags -->
-  <title>Het bevende beeldverhaal — Grote verzameling strips en graphic novels</title>
-  <meta name="title" content="Het bevende beeldverhaal — Grote verzameling strips en graphic novels">
+  <title>Bevende Beeldverhalen — Grote verzameling strips en graphic novels</title>
+  <meta name="title" content="Bevende Beeldverhalen — Grote verzameling strips en graphic novels">
   <meta name="description" content="Grote vintage verzameling strips en graphic novels uit voornamelijk de jaren 60, 70 en 80 (o.a. Asterix, Donald Duck, Guust Flater, Lucky Luke, Philémon, Ravian en Suske &amp; Wiske). Te koop per item of partij in Haarlem.">
   <meta name="keywords" content="strips te koop, stripboeken verzameling, graphic novels, Haarlem, Asterix, Donald Duck, Guust Flater, Lucky Luke, Suske en Wiske, Philémon, Ravian, vintage strips, stripverzameling koop">
-  <meta name="author" content="Het bevende beeldverhaal">
+  <meta name="author" content="Bevende Beeldverhalen">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#c3bf9d">
-  <meta name="apple-mobile-web-app-title" content="Bevend Beeldverhaal">
-  <meta name="application-name" content="Het bevende beeldverhaal">
+  <meta name="apple-mobile-web-app-title" content="Bevende Beeldverhalen">
+  <meta name="application-name" content="Bevende Beeldverhalen">
 
   <!-- Favicon & App Icons -->
   <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -24,27 +24,29 @@
 
   <!-- Open Graph / Facebook / WhatsApp -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Het bevende beeldverhaal — Grote verzameling strips en graphic novels">
+  <meta property="og:title" content="Bevende Beeldverhalen — Grote verzameling strips en graphic novels">
   <meta property="og:description" content="Grote vintage verzameling strips en graphic novels uit voornamelijk de jaren 60, 70 en 80 te koop. Asterix, Donald Duck, Guust Flater, Lucky Luke, Suske &amp; Wiske en meer in Haarlem.">
-  <meta property="og:image" content="site/strips.jpg">
-  <meta property="og:image:alt" content="Het bevende beeldverhaal stripcollectie">
-  <meta property="og:site_name" content="Het bevende beeldverhaal">
+  <meta property="og:image" content="site/collectie.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Bevende Beeldverhalen stripcollectie overzicht">
+  <meta property="og:site_name" content="Bevende Beeldverhalen">
   <meta property="og:locale" content="nl_NL">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Het bevende beeldverhaal — Grote verzameling strips en graphic novels">
+  <meta name="twitter:title" content="Bevende Beeldverhalen — Grote verzameling strips en graphic novels">
   <meta name="twitter:description" content="Grote vintage verzameling strips en graphic novels uit de jaren 60, 70 en 80 te koop in Haarlem.">
-  <meta name="twitter:image" content="site/strips.jpg">
+  <meta name="twitter:image" content="site/collectie.jpg">
 
   <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Store",
-    "name": "Het bevende beeldverhaal",
+    "name": "Bevende Beeldverhalen",
     "description": "Grote gevarieerde verzameling klassieke strips en graphic novels voornamelijk uit de jaren 60, 70 en 80 te koop in Haarlem.",
-    "image": "site/strips.jpg",
+    "image": "site/collectie.jpg",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Haarlem",
@@ -125,7 +127,6 @@
       display: block;
     }
 
-
     /* Hero Header Section */
     header.hero-header {
       position: relative;
@@ -139,12 +140,12 @@
       max-width: 1100px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 400px 1fr;
+      grid-template-columns: 420px 1fr;
       gap: 38px;
       align-items: center;
     }
 
-    /* Left Frame */
+    /* Left Visual Frame & Auto Showcase */
     .hero-visual {
       position: relative;
     }
@@ -170,13 +171,68 @@
       justify-content: center;
       overflow: hidden;
       cursor: pointer;
+      min-height: 280px;
+      height: 340px;
     }
-    .hero-image-frame img {
+    .hero-slide {
+      position: absolute;
+      inset: 0;
       width: 100%;
-      height: auto;
-      max-height: 400px;
-      object-fit: contain;
-      display: block;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.6s ease-in-out;
+      pointer-events: none;
+    }
+    .hero-slide.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .hero-nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(24, 22, 21, 0.75);
+      color: #fff;
+      border: 2px solid var(--border-ink);
+      font-size: 1.1rem;
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      opacity: 0;
+      transition: opacity 0.2s, background 0.15s;
+    }
+    .hero-image-frame:hover .hero-nav-btn { opacity: 1; }
+    .hero-nav-btn:hover { background: var(--vermillion); }
+    .hero-nav-btn.prev { left: 8px; }
+    .hero-nav-btn.next { right: 8px; }
+
+    .hero-dots {
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      z-index: 10;
+    }
+    .hero-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.45);
+      border: 1.5px solid rgba(0, 0, 0, 0.6);
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .hero-dot.active {
+      background: var(--hazard-yellow);
+      transform: scale(1.3);
     }
 
     /* Right Copy Block */
@@ -261,70 +317,7 @@
 
     .container { max-width: 1100px; margin: 32px auto; padding: 0 20px; }
 
-    /* "IMPRESSIES" Carousel Section */
-    .showcase-section {
-      background: var(--cream);
-      border: 3px solid var(--border-ink);
-      border-radius: 4px;
-      padding: 24px 22px 28px 22px;
-      margin-bottom: 28px;
-      box-shadow: 6px 6px 0px rgba(24, 22, 21, 0.12);
-    }
-    .showcase-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-      padding-bottom: 8px;
-      border-bottom: 2px dashed var(--border-ink);
-    }
-    .showcase-header h2 {
-      font-family: 'Cabinet Grotesk', sans-serif;
-      font-size: 1.4rem;
-      font-weight: 900;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--ink);
-    }
-    .refresh-btn {
-      background: var(--cream);
-      border: 2px solid var(--border-ink);
-      padding: 6px 14px;
-      font-family: inherit;
-      font-weight: 700;
-      font-size: 0.82rem;
-      cursor: pointer;
-      box-shadow: 2px 2px 0px var(--border-ink);
-      transition: transform 0.1s;
-    }
-    .refresh-btn:hover { transform: translate(-1px, -1px); box-shadow: 3px 3px 0px var(--vermillion); }
-
-    .collage-grid {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 16px;
-      align-items: center;
-      justify-items: center;
-      min-height: 180px;
-    }
-
-    .collage-img-direct {
-      max-width: 100%;
-      height: 170px;
-      object-fit: contain;
-      border: none;
-      border-radius: 4px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
-      cursor: pointer;
-      background: transparent;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    .collage-img-direct:hover {
-      transform: translateY(-4px) scale(1.04);
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Controls Bar: Search & Compact Pill Tabs */
+    /* Controls Wrapper (Search Box Only) */
     .controls-wrapper {
       background: var(--cream);
       border: 3px solid var(--border-ink);
@@ -342,39 +335,49 @@
       border: 2px solid var(--border-ink);
       background: #e9e3d1;
       outline: none;
-      margin-bottom: 12px;
     }
 
-    /* Compact Pill Filter Buttons */
-    .quick-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      align-items: center;
+    /* Custom Series Banner / Info Box */
+    .custom-series-banner {
+      background: #fff8e6;
+      border: 2px dashed var(--border-ink);
+      border-radius: 4px;
+      padding: 16px 20px;
+      margin: 10px 0 14px 0;
     }
-    .pill-label {
-      font-size: 0.78rem;
-      font-weight: 800;
+    .custom-series-banner .banner-title {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: var(--vermillion);
       text-transform: uppercase;
-      color: var(--subtle);
-      margin-right: 4px;
+      margin-bottom: 6px;
+      letter-spacing: 0.02em;
     }
-    .pill-btn {
-      background: #eee8dc;
-      border: 1.5px solid var(--border-ink);
+    .custom-series-banner .banner-subtitle {
+      font-size: 0.94rem;
+      font-weight: 600;
       color: var(--ink);
-      font-family: inherit;
-      font-size: 0.78rem;
-      font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 20px;
-      cursor: pointer;
-      transition: all 0.15s;
+      line-height: 1.5;
     }
-    .pill-btn:hover, .pill-btn.active {
-      background: var(--ink);
-      color: var(--cream);
-      border-color: var(--ink);
+    .banner-gallery-placeholder {
+      margin-top: 12px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .banner-gallery-placeholder img {
+      height: 120px;
+      object-fit: contain;
+      border: 2px solid var(--border-ink);
+      background: #ffffff;
+      padding: 3px;
+      cursor: pointer;
+      box-shadow: 3px 3px 0px rgba(0,0,0,0.1);
+      transition: transform 0.15s;
+    }
+    .banner-gallery-placeholder img:hover {
+      transform: scale(1.05);
     }
 
     /* Accordion Chapters */
@@ -422,7 +425,7 @@
       background: #fffdfa;
     }
 
-    /* Item Rows without 'De Staat' */
+    /* Item Rows */
     .item-row {
       padding: 12px 0;
       display: flex;
@@ -456,7 +459,20 @@
     .item-meta { font-size: 0.84rem; color: var(--subtle); line-height: 1.45; }
     
     .item-right { display: flex; align-items: center; gap: 18px; }
-    .price { font-size: 1.1rem; font-weight: 800; color: var(--vermillion); min-width: 65px; text-align: right; font-family: 'Cabinet Grotesk', sans-serif; }
+    .price { font-size: 1.1rem; font-weight: 800; color: var(--vermillion); min-width: 75px; text-align: right; font-family: 'Cabinet Grotesk', sans-serif; }
+    .price.notk { color: var(--subtle); font-size: 0.95rem; font-weight: 700; font-style: italic; }
+    .price.sold { color: #888888; font-size: 0.95rem; font-weight: 800; text-transform: uppercase; }
+    .sold-badge {
+      background: #888888;
+      color: #ffffff;
+      font-family: 'Syne', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 3px;
+      letter-spacing: 0.04em;
+    }
     .select-btn { display: flex; align-items: center; gap: 6px; cursor: pointer; font-size: 0.85rem; font-weight: 700; }
     .select-btn input { width: 18px; height: 18px; accent-color: var(--vermillion); }
 
@@ -589,11 +605,9 @@
     }
 
     /* Responsive adjustments */
-    @media (max-width: 1000px) {
-      .collage-grid { grid-template-columns: repeat(3, 1fr); }
-    }
     @media (max-width: 860px) {
       .hero-layout { grid-template-columns: 1fr; gap: 24px; text-align: left; }
+      .hero-image-frame { height: 280px; }
       .item-row { flex-direction: column; align-items: flex-start; gap: 12px; }
       .item-right { width: 100%; justify-content: space-between; border-top: 1px solid #ede8dc; padding-top: 8px; }
     }
@@ -616,9 +630,6 @@
         padding: 0 12px;
         margin: 20px auto;
       }
-      .showcase-section {
-        padding: 16px 14px 20px 14px;
-      }
       .controls-wrapper {
         padding: 14px 12px;
       }
@@ -635,13 +646,6 @@
       }
       .contact-section {
         padding: 28px 16px;
-      }
-      .collage-grid { 
-        grid-template-columns: repeat(2, 1fr); 
-        gap: 10px; 
-      }
-      .collage-img-direct { 
-        height: 135px; 
       }
       summary {
         padding: 12px 14px;
@@ -673,24 +677,24 @@
 
   <!-- Decorative Top Rip Banner -->
   <div class="decorative-top-strip">
-    <img src="site/rip.png" alt="Het bevende beeldverhaal paper rip header">
+    <img src="site/rip.png" alt="Bevende Beeldverhalen paper rip header">
   </div>
 
   <!-- Hero Header Section -->
   <header class="hero-header">
     <div class="hero-layout">
       
-      <!-- Left Visual Frame -->
+      <!-- Left Visual Frame (10-Hero Showcase) -->
       <div class="hero-visual">
-        <div class="hero-image-frame" onclick="openLightbox('images/PXL_20250830_142455851.jpg')">
-          <img src="images/PXL_20250830_142455851.jpg" alt="Collectie Overzichtsfoto">
+        <div class="hero-image-frame" id="heroSlidesContainer">
+          <!-- Populated dynamically by JS -->
         </div>
       </div>
 
       <!-- Right Content Box -->
       <div class="hero-copy">
         <span class="hero-tag">TE KOOP</span>
-        <h1>Het bevende beeldverhaal</h1>
+        <h1>Bevende Beeldverhalen</h1>
         <div class="hero-lead">Grote verzameling strips en graphic novels - in bulk of per item</div>
         
         <p class="hero-note">
@@ -707,23 +711,10 @@
 
   <div class="container">
 
-    <!-- "IMPRESSIES" Carousel Section -->
-    <div class="showcase-section">
-      <div class="showcase-header">
-        <h2>IMPRESSIES</h2>
-        <button class="refresh-btn" onclick="rotateShowcase()">Volgende ↻</button>
-      </div>
-      <div class="collage-grid" id="photoGallery"></div>
-    </div>
-
-    <!-- Controls: Search + Compact Pill Filters -->
+    <!-- Controls: Search Box Only -->
     <div class="controls-wrapper">
       <div class="search-box">
-        <input type="text" id="searchInput" placeholder="Zoek op titel, auteur of albumnaam..." oninput="filterComics()">
-      </div>
-      <div class="quick-pills" id="quickPills">
-        <span class="pill-label">Reeksen:</span>
-        <button class="pill-btn active" onclick="selectPill('')">Alles</button>
+        <input type="text" id="searchInput" placeholder="Zoek op titel, auteur of reeks..." oninput="filterComics()">
       </div>
     </div>
 
@@ -738,7 +729,7 @@
       <p>Stuur direct een bericht voor biedingen op partijen, de gehele collectie of het plannen van een afspraak in Haarlem.</p>
       
       <form class="contact-form" action="https://formsubmit.co/david.enker@gmail.com" method="POST">
-        <input type="hidden" name="_subject" value="Nieuwe interesse: Het bevende beeldverhaal">
+        <input type="hidden" name="_subject" value="Nieuwe interesse: Bevende Beeldverhalen">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_template" value="table">
         
@@ -776,25 +767,25 @@
     <img id="lightboxImg" class="lightbox-content" src="" alt="Vergrote weergave">
   </div>
 
-  <script src="comics.js?v=20260814_deploy"></script>
+  <script src="comics.js?v=20260815_deploy"></script>
 
   <script>
-    const explicitPhotos = [
-      "images/24639.jpeg",
-      "images/IMG_4210b.jpg",
-      "images/PXL_20250830_133146111.jpg",
-      "images/PXL_20250830_133249784.jpg",
-      "images/PXL_20250830_133426374.jpg",
-      "images/PXL_20250830_133916276.jpg",
-      "images/PXL_20250830_134027924.jpg"
+    const heroImages = [
+      "site/hero01.jpg",
+      "site/hero02.jpg",
+      "site/hero03.jpg",
+      "site/hero04.jpg",
+      "site/hero05.jpg",
+      "site/hero06.jpg",
+      "site/hero07.jpg",
+      "site/hero08.jpg",
+      "site/hero09.jpg",
+      "site/hero10.jpg"
     ];
 
-    const heroImageName = "PXL_20250830_142455851.jpg";
+    let currentHeroIndex = 0;
+    let heroTimer = null;
     const selectedIds = new Set();
-    let photoIndex = 0;
-    const batchSize = 6;
-    let autoRotateTimer = null;
-    let selectedSeriesFilter = "";
 
     /* Lightbox Functions */
     function openLightbox(src) {
@@ -807,36 +798,52 @@
       document.getElementById('lightboxModal').classList.remove('active');
     }
 
-    function getCleanPhotoList() {
-      const allPhotos = (typeof galleryPhotos !== 'undefined' && galleryPhotos.length > 0) 
-        ? galleryPhotos 
-        : explicitPhotos;
-      return allPhotos.filter(src => !src.includes(heroImageName));
-    }
+    /* Hero Slideshow Functions */
+    function renderHeroShowcase() {
+      const container = document.getElementById('heroSlidesContainer');
+      if (!container) return;
 
-    function rotateShowcase() {
-      const gallery = document.getElementById('photoGallery');
-      const photos = getCleanPhotoList();
-      if (photos.length === 0) return;
-
-      const currentBatch = [];
-      const count = Math.min(batchSize, photos.length);
-      
-      for (let i = 0; i < count; i++) {
-        const idx = (photoIndex + i) % photos.length;
-        currentBatch.push(photos[idx]);
-      }
-      
-      gallery.innerHTML = currentBatch.map(src => `
-        <img src="${src}" class="collage-img-direct" alt="Impressie foto" onclick="openLightbox('${src}')" onerror="this.style.display='none';">
+      const slidesHtml = heroImages.map((src, idx) => `
+        <img src="${src}" class="hero-slide ${idx === 0 ? 'active' : ''}" alt="Hero shot ${idx + 1}" onclick="openLightbox('${src}')">
       `).join('');
 
-      photoIndex = (photoIndex + count) % photos.length;
+      const navHtml = `
+        <button class="hero-nav-btn prev" onclick="event.stopPropagation(); changeHeroSlide(-1)">&#10094;</button>
+        <button class="hero-nav-btn next" onclick="event.stopPropagation(); changeHeroSlide(1)">&#10095;</button>
+        <div class="hero-dots">
+          ${heroImages.map((_, idx) => `<span class="hero-dot ${idx === 0 ? 'active' : ''}" onclick="event.stopPropagation(); setHeroSlide(${idx})"></span>`).join('')}
+        </div>
+      `;
+
+      container.innerHTML = slidesHtml + navHtml;
     }
 
-    function startAutoRotate() {
-      rotateShowcase();
-      autoRotateTimer = setInterval(rotateShowcase, 4000);
+    function changeHeroSlide(direction) {
+      setHeroSlide((currentHeroIndex + direction + heroImages.length) % heroImages.length);
+    }
+
+    function setHeroSlide(index) {
+      currentHeroIndex = index;
+      const slides = document.querySelectorAll('.hero-slide');
+      const dots = document.querySelectorAll('.hero-dot');
+      slides.forEach((s, i) => s.classList.toggle('active', i === index));
+      dots.forEach((d, i) => d.classList.toggle('active', i === index));
+    }
+
+    function startHeroShowcase() {
+      renderHeroShowcase();
+      heroTimer = setInterval(() => {
+        changeHeroSlide(1);
+      }, 3000);
+
+      const frame = document.querySelector('.hero-image-frame');
+      if (frame) {
+        frame.addEventListener('mouseenter', () => clearInterval(heroTimer));
+        frame.addEventListener('mouseleave', () => {
+          clearInterval(heroTimer);
+          heroTimer = setInterval(() => changeHeroSlide(1), 3000);
+        });
+      }
     }
 
     /* Categorization Helper */
@@ -867,12 +874,7 @@
       }
 
       if (lower.includes("donald")) {
-        const titleLower = (comic.title || "").toLowerCase();
-        if (titleLower.includes("geen titel") || titleLower.includes("weekblad")) {
-          return "Donald Duck (weekblad)";
-        } else {
-          return "Donald Duck (boeken)";
-        }
+        return "Donald Duck (boeken)";
       }
 
       if (lower.includes("kuifje")) {
@@ -1008,86 +1010,6 @@
       };
     }
 
-    function formatCategoryPillHtml(categoryName) {
-      let display = categoryName.replace(" (various)", "");
-      const match = display.match(/^([^(]+)(\s*\(.*\))?$/);
-      if (match) {
-        const mainTitle = match[1].trim();
-        const subTitle = match[2] ? match[2].trim() : '';
-        if (subTitle) {
-          return `${mainTitle} <span style="font-weight: 400; opacity: 0.92;">${subTitle}</span>`;
-        }
-        return mainTitle;
-      }
-      return display;
-    }
-
-    function initPills(data) {
-      const pillsContainer = document.getElementById('quickPills');
-      const categories = [...new Set(data.map(c => getDisplayCategory(c)))];
-      if (!categories.includes("Diversen (various)")) {
-        categories.push("Diversen (various)");
-      }
-      categories.sort((a, b) => {
-        const isADiversen = a.toLowerCase().includes("diversen");
-        const isBDiversen = b.toLowerCase().includes("diversen");
-        if (isADiversen) return 1;
-        if (isBDiversen) return -1;
-        return a.localeCompare(b);
-      });
-
-      pillsContainer.innerHTML = '<span class="pill-label">Reeksen:</span><button class="pill-btn active" onclick="selectPill(\'\', this)">Alles</button>';
-
-      categories.forEach(cat => {
-        const btn = document.createElement('button');
-        btn.className = 'pill-btn';
-        btn.innerHTML = formatCategoryPillHtml(cat);
-        
-        const theme = getSeriesTheme(cat);
-        if (theme && theme.headerBg) {
-          btn.dataset.bg = theme.headerBg;
-          btn.dataset.color = theme.headerColor || 'inherit';
-          btn.dataset.outline = theme.textOutline || '';
-          
-          btn.style.background = theme.headerBg;
-          btn.style.color = theme.headerColor;
-          btn.style.borderColor = 'var(--border-ink)';
-          if (theme.textOutline) {
-            btn.style.cssText += theme.textOutline;
-          }
-        }
-
-        btn.onclick = () => selectPill(cat, btn);
-        pillsContainer.appendChild(btn);
-      });
-    }
-
-    function selectPill(cat, element) {
-      selectedSeriesFilter = cat;
-      document.querySelectorAll('.pill-btn').forEach(b => {
-        b.classList.remove('active');
-        if (b.dataset.bg) {
-          b.style.background = b.dataset.bg;
-          b.style.color = b.dataset.color;
-          b.style.borderColor = 'var(--border-ink)';
-          b.style.boxShadow = 'none';
-          b.style.transform = 'scale(1)';
-        }
-      });
-      if (element) {
-        element.classList.add('active');
-        if (element.dataset.bg) {
-          element.style.borderColor = '#fffc00';
-          element.style.boxShadow = '0 0 10px #fffc00, 0 2px 6px rgba(0,0,0,0.4)';
-          element.style.transform = 'scale(1.06)';
-        }
-      } else {
-        const firstPill = document.querySelector('.pill-btn');
-        if (firstPill) firstPill.classList.add('active');
-      }
-      filterComics();
-    }
-
     function renderAccordion(data) {
       const accordion = document.getElementById('seriesAccordion');
       accordion.innerHTML = '';
@@ -1099,16 +1021,30 @@
         grouped[cat].push(comic);
       });
 
-      // Always ensure Diversen (various) exists at the bottom
+      // Always ensure Donald Duck (weekblad) exists
+      if (!grouped["Donald Duck (weekblad)"]) {
+        grouped["Donald Duck (weekblad)"] = [];
+      }
+
+      // Always ensure Diversen (various) exists at bottom
       if (!grouped["Diversen (various)"]) {
         grouped["Diversen (various)"] = [];
       }
 
-      const isSearching = document.getElementById('searchInput').value.trim().length > 0;
+      const searchInputVal = document.getElementById('searchInput').value.trim();
+      const isSearching = searchInputVal.length > 0;
+      const searchLower = searchInputVal.toLowerCase();
 
-      const categoriesList = Object.keys(grouped).sort((a, b) => {
-        const isADiversen = a.toLowerCase().includes("diversen") || a.toLowerCase().includes("overige");
-        const isBDiversen = b.toLowerCase().includes("diversen") || b.toLowerCase().includes("overige");
+      let categoriesList = Object.keys(grouped).filter(cat => {
+        if (isSearching) {
+          return grouped[cat].length > 0 || cat.toLowerCase().includes(searchLower);
+        }
+        return true;
+      });
+
+      categoriesList.sort((a, b) => {
+        const isADiversen = a.toLowerCase().includes("diversen");
+        const isBDiversen = b.toLowerCase().includes("diversen");
         if (isADiversen) return 1;
         if (isBDiversen) return -1;
         return a.localeCompare(b);
@@ -1116,9 +1052,33 @@
 
       categoriesList.forEach(categoryName => {
         const items = grouped[categoryName];
-        const openAttr = (isSearching || selectedSeriesFilter !== "") ? 'open' : '';
+        const openAttr = isSearching ? 'open' : '';
         const theme = getSeriesTheme(categoryName);
         const textOutlineStyle = theme.textOutline ? theme.textOutline : '';
+
+        let customBannerHtml = '';
+
+        if (categoryName === "Donald Duck (weekblad)") {
+          customBannerHtml = `
+            <div class="custom-series-banner">
+              <div class="banner-title">JAARGANGEN van ca. 1959-1985</div>
+              <div class="banner-subtitle">sommige losse nummers ontbreken; vraag me welke nummers je zoekt en ik kijk het na.</div>
+              <div class="banner-gallery-placeholder" id="donaldDuckWeekbladGallery">
+                <!-- Afbeeldingen van weekbladen kunnen hier geplaatst worden -->
+              </div>
+            </div>
+          `;
+        } else if (categoryName === "Chris Ware") {
+          customBannerHtml = `
+            <div class="custom-series-banner" style="background: #f4f3ed; border-color: #747474;">
+              <div class="banner-title" style="color: #444;">Chris Ware — Collectie &amp; Details</div>
+              <div class="banner-subtitle">Bijzondere uitgaven en graphic novels van Chris Ware. Afbeeldingen en uitgebreide specificaties worden hier geplaatst.</div>
+              <div class="banner-gallery-placeholder" id="chrisWareGallery">
+                <!-- Afbeeldingen en details van Chris Ware kunnen hier geplaatst worden -->
+              </div>
+            </div>
+          `;
+        }
 
         let rowsHtml = items.length > 0
           ? items.map(comic => {
@@ -1132,6 +1092,32 @@
               if (comic.author) metaParts.push(comic.author);
               if (comic.print && comic.print.trim() !== "") metaParts.push(`Druk: ${comic.print}`);
 
+              const rawPrice = (comic.price || '').trim().toLowerCase();
+              const rawCond = (comic.condition || '').trim().toLowerCase();
+              const isSold = rawPrice === 'verkocht' || rawCond === 'verkocht';
+
+              let priceHtml = '';
+              let actionHtml = '';
+
+              if (isSold) {
+                priceHtml = ``;
+                actionHtml = `<span class="sold-badge">Verkocht</span>`;
+              } else if (rawPrice && rawPrice !== '—' && rawPrice !== '-') {
+                priceHtml = `<span class="price">${comic.price}</span>`;
+                actionHtml = `
+                  <label class="select-btn">
+                    <input type="checkbox" ${isChecked} onchange="toggleSelect(${comic.id}, this.checked)"> Selecteer
+                  </label>
+                `;
+              } else {
+                priceHtml = `<span class="price notk">n.o.t.k.</span>`;
+                actionHtml = `
+                  <label class="select-btn">
+                    <input type="checkbox" ${isChecked} onchange="toggleSelect(${comic.id}, this.checked)"> Selecteer
+                  </label>
+                `;
+              }
+
               return `
                 <div class="item-row">
                   <div class="item-left">
@@ -1142,18 +1128,18 @@
                     </div>
                   </div>
                   <div class="item-right">
-                    <span class="price">${comic.price || '—'}</span>
-                    <label class="select-btn">
-                      <input type="checkbox" ${isChecked} onchange="toggleSelect(${comic.id}, this.checked)"> Selecteer
-                    </label>
+                    ${priceHtml}
+                    ${actionHtml}
                   </div>
                 </div>
               `;
             }).join('')
-          : `<div style="padding: 18px 20px; font-size: 0.95rem; line-height: 1.6; color: var(--ink); background: rgba(255,255,255,0.6); border: 2px dashed var(--border-ink); margin: 8px 0; border-radius: 4px;">
-               <strong style="font-size: 1rem; color: var(--ink);">Binnenkort beschikbaar / in te voeren verzameling:</strong><br>
-               Inclusief titels zoals <em>Storm</em>, <em>Trigië</em>, <em>Robbedoes en Kwabbernoot</em>, <em>Baard en Kale</em>, alsmede diverse uitgaven van uitgeverij <strong>Dupuis</strong>, <strong>Casterman</strong>, e.a.
-             </div>`;
+          : (categoryName === "Donald Duck (weekblad)" || categoryName === "Chris Ware"
+              ? '' 
+              : `<div style="padding: 18px 20px; font-size: 0.95rem; line-height: 1.6; color: var(--ink); background: rgba(255,255,255,0.6); border: 2px dashed var(--border-ink); margin: 8px 0; border-radius: 4px;">
+                   <strong style="font-size: 1rem; color: var(--ink);">Binnenkort beschikbaar / in te voeren verzameling:</strong><br>
+                   Inclusief titels zoals <em>Storm</em>, <em>Trigië</em>, <em>Robbedoes en Kwabbernoot</em>, <em>Baard en Kale</em>, alsmede diverse uitgaven van uitgeverij <strong>Dupuis</strong>, <strong>Casterman</strong>, e.a.
+                 </div>`);
 
         accordion.innerHTML += `
           <details ${openAttr} style="border-color: var(--border-ink);">
@@ -1162,6 +1148,7 @@
               <span class="badge" style="background-color: ${theme.badgeBg}; color: ${theme.badgeColor}; text-shadow: none;">${items.length} item${items.length !== 1 ? 's' : ''}</span>
             </summary>
             <div class="series-content" style="background: ${theme.contentBg};">
+              ${customBannerHtml}
               ${rowsHtml}
             </div>
           </details>
@@ -1173,11 +1160,9 @@
       const search = document.getElementById('searchInput').value.toLowerCase();
       const filtered = comics.filter(c => {
         const cat = getDisplayCategory(c);
-        const matchesSearch = c.title.toLowerCase().includes(search) || 
-                              c.author.toLowerCase().includes(search) || 
-                              cat.toLowerCase().includes(search);
-        const matchesPill = selectedSeriesFilter === "" || cat === selectedSeriesFilter;
-        return matchesSearch && matchesPill;
+        return c.title.toLowerCase().includes(search) || 
+               c.author.toLowerCase().includes(search) || 
+               cat.toLowerCase().includes(search);
       });
       renderAccordion(filtered);
     }
@@ -1207,9 +1192,8 @@
     }
 
     document.addEventListener("DOMContentLoaded", () => {
-      startAutoRotate();
+      startHeroShowcase();
       if (typeof comics !== 'undefined') {
-        initPills(comics);
         renderAccordion(comics);
       }
     });

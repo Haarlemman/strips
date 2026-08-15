@@ -1105,7 +1105,7 @@ const comics = [
   },
   {
     "id": 93,
-    "title": "(geen titel)",
+    "title": "en andere verhalen (1958)",
     "series": "Donald Duck",
     "issue": "4",
     "author": "Walt Disney",
@@ -1117,7 +1117,7 @@ const comics = [
   },
   {
     "id": 94,
-    "title": "(geen titel)",
+    "title": "en andere verhalen (1969)",
     "series": "Donald Duck",
     "issue": "15",
     "author": "Walt Disney",
@@ -1129,7 +1129,7 @@ const comics = [
   },
   {
     "id": 95,
-    "title": "(geen titel)",
+    "title": "en andere verhalen (1974)",
     "series": "Donald Duck",
     "issue": "20",
     "author": "Walt Disney",
@@ -1141,7 +1141,7 @@ const comics = [
   },
   {
     "id": 96,
-    "title": "(geen titel)",
+    "title": "en andere verhalen (1975)",
     "series": "Donald Duck",
     "issue": "21",
     "author": "Walt Disney",
@@ -1153,7 +1153,7 @@ const comics = [
   },
   {
     "id": 97,
-    "title": "(geen titel)",
+    "title": "en andere verhalen (1976)",
     "series": "Donald Duck",
     "issue": "22",
     "author": "Walt Disney",
@@ -4243,7 +4243,7 @@ const comics = [
     "author": "Hergé",
     "print": "",
     "condition": "goed",
-    "price": "€ 2,50",
+    "price": "verkocht",
     "link": "https://nl.wikipedia.org/wiki/Kuifje_in_het_land_van_de_Sovjets"
   },
   {
@@ -4496,7 +4496,7 @@ const comics = [
     "author": "Hergé",
     "print": "",
     "condition": "goed",
-    "price": "€ 2,50",
+    "price": "verkocht",
     "link": "https://nl.wikipedia.org/wiki/Kuifje_en_de_Alfa-kunst"
   },
   {
